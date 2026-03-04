@@ -1,0 +1,315 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   FONT FACES — Self-hosted from /assets/fonts/
+   ============================================================ */
+@font-face {
+  font-family: "Mona Sans";
+  src: url("/assets/fonts/MonaSans[wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono[wght].woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+/* ============================================================
+   DESIGN TOKENS — Dark Gaming Theme
+   Background: near-black #050508  → oklch(0.09 0.02 280)
+   Neon blue:  #00d4ff             → oklch(0.79 0.16 210)
+   Neon purple:#8b5cf6             → oklch(0.6 0.22 290)
+   Neon orange:#f97316             → oklch(0.7 0.19 50)
+   ============================================================ */
+@layer base {
+  :root {
+    --radius: 0.25rem;
+    --background: 0.09 0.015 280;
+    --foreground: 0.96 0.01 250;
+    --card: 0.12 0.02 280;
+    --card-foreground: 0.96 0.01 250;
+    --popover: 0.12 0.02 280;
+    --popover-foreground: 0.96 0.01 250;
+    --primary: 0.79 0.16 210;
+    --primary-foreground: 0.09 0.015 280;
+    --secondary: 0.6 0.22 290;
+    --secondary-foreground: 0.96 0.01 250;
+    --muted: 0.16 0.02 280;
+    --muted-foreground: 0.6 0.03 260;
+    --accent: 0.7 0.19 50;
+    --accent-foreground: 0.09 0.015 280;
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.96 0.01 250;
+    --border: 0.22 0.04 265;
+    --input: 0.16 0.02 275;
+    --ring: 0.79 0.16 210;
+    --chart-1: 0.79 0.16 210;
+    --chart-2: 0.6 0.22 290;
+    --chart-3: 0.7 0.19 50;
+    --chart-4: 0.65 0.22 25;
+    --chart-5: 0.75 0.18 170;
+    --sidebar: 0.1 0.02 280;
+    --sidebar-foreground: 0.96 0.01 250;
+    --sidebar-primary: 0.79 0.16 210;
+    --sidebar-primary-foreground: 0.09 0.015 280;
+    --sidebar-accent: 0.6 0.22 290;
+    --sidebar-accent-foreground: 0.96 0.01 250;
+    --sidebar-border: 0.22 0.04 265;
+    --sidebar-ring: 0.79 0.16 210;
+
+    /* Custom neon tokens */
+    --neon-blue: 0.79 0.16 210;
+    --neon-purple: 0.6 0.22 290;
+    --neon-orange: 0.7 0.19 50;
+    --neon-surface: 0.12 0.025 280;
+    --grid-line: rgba(0, 212, 255, 0.06);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Mona Sans", system-ui, sans-serif;
+    background-color: oklch(0.09 0.015 280);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: oklch(0.79 0.16 210 / 0.3);
+    color: oklch(0.96 0.01 250);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.09 0.015 280);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.79 0.16 210 / 0.4);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.79 0.16 210 / 0.7);
+  }
+}
+
+/* ============================================================
+   NEON GLOW UTILITIES
+   ============================================================ */
+@layer utilities {
+  .neon-glow-blue {
+    text-shadow:
+      0 0 10px oklch(0.79 0.16 210 / 0.8),
+      0 0 20px oklch(0.79 0.16 210 / 0.5),
+      0 0 40px oklch(0.79 0.16 210 / 0.3);
+  }
+
+  .neon-glow-purple {
+    text-shadow:
+      0 0 10px oklch(0.6 0.22 290 / 0.8),
+      0 0 20px oklch(0.6 0.22 290 / 0.5),
+      0 0 40px oklch(0.6 0.22 290 / 0.3);
+  }
+
+  .neon-glow-orange {
+    text-shadow:
+      0 0 10px oklch(0.7 0.19 50 / 0.8),
+      0 0 20px oklch(0.7 0.19 50 / 0.5);
+  }
+
+  .neon-border-blue {
+    box-shadow:
+      0 0 8px oklch(0.79 0.16 210 / 0.5),
+      0 0 20px oklch(0.79 0.16 210 / 0.2),
+      inset 0 0 8px oklch(0.79 0.16 210 / 0.05);
+  }
+
+  .neon-border-purple {
+    box-shadow:
+      0 0 8px oklch(0.6 0.22 290 / 0.5),
+      0 0 20px oklch(0.6 0.22 290 / 0.2),
+      inset 0 0 8px oklch(0.6 0.22 290 / 0.05);
+  }
+
+  .neon-border-orange {
+    box-shadow:
+      0 0 8px oklch(0.7 0.19 50 / 0.5),
+      0 0 20px oklch(0.7 0.19 50 / 0.2),
+      inset 0 0 8px oklch(0.7 0.19 50 / 0.05);
+  }
+
+  .glass-card {
+    background: oklch(0.12 0.025 280 / 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid oklch(0.79 0.16 210 / 0.15);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s ease;
+  }
+  .glass-card-hover:hover {
+    border-color: oklch(0.79 0.16 210 / 0.5);
+    box-shadow:
+      0 0 15px oklch(0.79 0.16 210 / 0.2),
+      0 0 40px oklch(0.79 0.16 210 / 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Grid overlay texture */
+  .grid-overlay {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* About section — deep space dark with neon orange/blue scanline grid */
+  .about-bg {
+    background-color: oklch(0.07 0.02 20);
+    background-image:
+      /* Radial vignette to darken edges */
+      radial-gradient(
+        ellipse 120% 80% at 50% 50%,
+        oklch(0.10 0.03 25 / 0.0) 0%,
+        oklch(0.06 0.015 15 / 0.85) 100%
+      ),
+      /* Diagonal warm dark amber → deep charcoal gradient */
+      linear-gradient(
+        150deg,
+        oklch(0.10 0.04 30 / 1) 0%,
+        oklch(0.08 0.02 10 / 1) 35%,
+        oklch(0.09 0.03 200 / 1) 70%,
+        oklch(0.07 0.015 260 / 1) 100%
+      ),
+      /* Fine horizontal scanlines */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        oklch(0.79 0.18 50 / 0.025) 3px,
+        oklch(0.79 0.18 50 / 0.025) 4px
+      ),
+      /* Subtle vertical lines — creates a mesh */
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 39px,
+        oklch(0.6 0.15 210 / 0.04) 39px,
+        oklch(0.6 0.15 210 / 0.04) 40px
+      );
+    background-size:
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+  }
+
+  /* Scanline effect */
+  .scanlines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Angular clip path for game cards */
+  .clip-angular {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .clip-angular-sm {
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+
+  /* Gradient text */
+  .text-gradient-blue {
+    background: linear-gradient(135deg, oklch(0.79 0.16 210), oklch(0.7 0.18 240));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-blue-purple {
+    background: linear-gradient(135deg, oklch(0.79 0.16 210) 0%, oklch(0.6 0.22 290) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-title-line {
+    position: relative;
+    display: inline-block;
+  }
+  .section-title-line::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, oklch(0.79 0.16 210), oklch(0.6 0.22 290), transparent);
+    box-shadow: 0 0 8px oklch(0.79 0.16 210 / 0.6);
+  }
+
+  /* Hero particle dot */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: float-particle linear infinite;
+  }
+
+  @keyframes float-particle {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) translateX(calc(var(--drift, 50px) - 25px)); opacity: 0; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 10px oklch(0.79 0.16 210 / 0.4), 0 0 20px oklch(0.79 0.16 210 / 0.2); }
+    50% { box-shadow: 0 0 20px oklch(0.79 0.16 210 / 0.7), 0 0 40px oklch(0.79 0.16 210 / 0.4); }
+  }
+
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-blink {
+    animation: blink-cursor 1s step-end infinite;
+  }
+}
