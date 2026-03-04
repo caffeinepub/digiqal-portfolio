@@ -164,10 +164,10 @@ function Navigation() {
         <button
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Abdullah Shahid — scroll to top"
           className="font-display font-bold text-xl tracking-widest text-gradient-blue-purple neon-glow-blue focus-visible:outline-none"
-          aria-label="DIGIQAL — scroll to top"
         >
-          DIGIQAL
+          Abdullah Shahid
         </button>
 
         {/* Desktop Nav */}
@@ -1362,7 +1362,7 @@ function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex flex-col items-center sm:items-start gap-1">
             <span className="font-display font-bold text-lg tracking-widest text-gradient-blue-purple neon-glow-blue">
-              DIGIQAL
+              Abdullah Shahid
             </span>
             <span className="text-xs font-mono text-muted-foreground">
               3D Game Artist & Game UI Designer
@@ -1371,7 +1371,7 @@ function Footer() {
 
           <div className="flex flex-col items-center gap-1 text-center">
             <p className="text-xs text-muted-foreground">
-              Copyright © {year} DIGIQAL Game Artist Portfolio
+              Copyright © {year} Abdullah Shahid Game Artist Portfolio
             </p>
             <p className="text-xs text-muted-foreground">
               Built with{" "}
